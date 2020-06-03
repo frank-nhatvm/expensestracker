@@ -1,7 +1,8 @@
 package com.frank.expensestracker.ui.category
 
 import androidx.lifecycle.ViewModel
+import javax.inject.Inject
 
-class CategoriesViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class CategoriesViewModel @Inject constructor() : ViewModel() {
+
 }
