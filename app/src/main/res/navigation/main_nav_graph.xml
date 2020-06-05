@@ -22,11 +22,11 @@
             android:id="@+id/action_categoriesFragment_to_reportFragment"
             app:destination="@id/reportFragment" />
         <action
-            android:id="@+id/action_categoriesFragment_to_categoryFragment"
-            app:destination="@id/categoryFragment" />
-        <action
             android:id="@+id/action_categoriesFragment_to_listExpensesFragment"
             app:destination="@id/listExpensesFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/reportFragment"
@@ -39,7 +39,11 @@
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.frank.expensestracker.ui.category.CategoryFragment"
-        android:label="CategoryFragment" />
+        android:label="CategoryFragment" >
+        <argument
+            android:name="category_id"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/expensesFragment"
         android:name="com.frank.expensestracker.ui.expense.ExpensesFragment"
