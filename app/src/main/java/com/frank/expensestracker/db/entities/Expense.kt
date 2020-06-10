@@ -9,7 +9,7 @@ import org.threeten.bp.OffsetDateTime
 @Entity(tableName = "expense")
 
 class Expense(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     @ColumnInfo(name = "name") val name: String? = null,
     @ColumnInfo(name = "amount") val amount: Float = 0f,
     @ColumnInfo(name = "cate_id") val cateId: Int,

@@ -1,20 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.frank.expensestracker.ui.expense.ExpensesViewModel" />
+
+        <import type="android.view.View" />
+
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
         tools:context=".ui.expense.ExpensesFragment">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:clickable="false"
+            android:visibility="@{ viewModel.dataLoading ? View.VISIBLE : View.GONE }">
+
+            <ProgressBar
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Expense" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Category Expese name"
+            android:textColor="#111111"
+            android:textSize="16sp" />
 
-    </FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/background_input"
+            android:minHeight="40dp">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerCateExpense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:spinnerMode="dropdown"
+
+                android:textColor="#111111"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="6dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_arrow_drop_down"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Expese name"
+            android:textColor="#111111"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtExpenseName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/background_input"
+            android:hint="Breakfast, Lunch ..."
+            android:minHeight="40dp"
+            android:padding="6dp"
+            android:text="@={viewModel.expenseName}"
+            android:textColor="#111111"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Expese Amount"
+            android:textColor="#111111"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edtExpenseAmout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/background_input"
+            android:hint="Breakfast, Lunch ..."
+            android:inputType="number"
+            android:minHeight="40dp"
+            android:padding="6dp"
+            android:text="@={viewModel.expenseAmount}"
+            android:textColor="#111111"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/background_button"
+            android:onClick="@{ () -> viewModel.saveExpenseAction()}"
+            android:text="Save"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 </layout>

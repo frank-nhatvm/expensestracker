@@ -1,7 +1,5 @@
 package com.frank.expensestracker.repositories
 
-import androidx.lifecycle.LiveData
-import com.frank.expensestracker.db.ExpenseTrackerDB
 import com.frank.expensestracker.db.daos.CategoryDao
 import com.frank.expensestracker.db.entities.Category
 import javax.inject.Inject
